@@ -282,7 +282,7 @@
             }
 
             parameters.documentUrl = documentUrl;
-            pluginData = estimateTypeByFileExtension("pdf");
+            const pluginData = estimateTypeByFileExtension("pdf");
 
             if ( pluginData ) {
                 if ( String(typeof loadPlugin) !== "undefined" ) {
