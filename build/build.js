@@ -6,10 +6,17 @@ const shell      = require('shelljs'),
       fs         = require('fs'),
       releaseDir = './release',
       sourceDir  = './src',
-      sourcePdf  = './node_modules/pdfjs-dist',
       file       = filename => {
           return path.resolve(sourceDir, filename)
       };
+var sourcePdf  = './node_modules/pdfjs-dist';
+
+if(shell.exec(`if [ -d "./node_modules" ]; then
+ echo exists
+fi`).stdout.length === 0) {
+    sourcePdf = "../pdfjs-dist";
+};
+console.log(sourcePdf);
 shell.mkdir("release");
 shell.cp(path.resolve(sourceDir, 'index.html'), releaseDir);
 shell.cp(path.resolve(sourceDir, 'example.local.css'), releaseDir);
