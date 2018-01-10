@@ -1,8 +1,8 @@
 "use strict";
 
 const express = require('express'),
-      app     = express();
-      port = 8181
+      app     = express(),
+      port = 8181;
 app.use('/', express.static('./release'));
 app.use('/files', express.static('./test/files'));
 app.listen(port);
