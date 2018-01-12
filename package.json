@@ -31,10 +31,6 @@
     "type": "git",
     "url" : "git://github.com/vandernorth/ViewerJS.git"
   },
-  "dependencies"   : {
-    "pdfjs-dist" : "^2.0",
-    "node-webodf": "git://github.com/vandernorth/WebODF.git"
-  },
   "devDependencies": {
     "browserify": "^13",
     "shelljs"   : "^0",

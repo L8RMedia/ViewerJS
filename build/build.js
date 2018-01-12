@@ -16,35 +16,16 @@ if(shell.exec(`if [ -d "./node_modules" ]; then
 fi`).stdout.length === 0) {
     sourcePdf = "../pdfjs-dist";
 };
-console.log(sourcePdf);
+
 shell.mkdir("release");
-shell.cp(path.resolve(sourceDir, 'index.html'), releaseDir);
-shell.cp(path.resolve(sourceDir, 'example.local.css'), releaseDir);
-shell.cp(path.resolve(sourcePdf, './build/pdf.js'), releaseDir);
-shell.cp(path.resolve(sourcePdf, './build/pdf.worker.js'), releaseDir);
-shell.cp(path.resolve(sourceDir, 'text_layer_builder.js'), releaseDir);
-shell.cp(path.resolve(sourceDir, 'ui_utils.js'), releaseDir);
-shell.cp("-R", path.resolve("images"), releaseDir);
-shell.cp(path.resolve(sourceDir, 'ODFViewerPlugin.js'), releaseDir);
-shell.cp(path.resolve(sourceDir, 'PDFViewerPlugin.js'), releaseDir);
-shell.cp(path.resolve(sourceDir, 'ImageViewerPlugin.js'), releaseDir);
-shell.cp(path.resolve(sourceDir, 'MultimediaViewerPlugin.js'), releaseDir);
-shell.cp(path.resolve(sourceDir, 'UnknownFilePlugin.js'), releaseDir);
-
-shell
-    .cat([file('additionals.js'),
-        file('viewer.js'),
-        file('PluginLoader.js')])
-    .to(path.resolve(releaseDir, 'viewer.js'));
-
-shell
-    .cat([file('ODFViewerPlugin.css'),
-        file('PDFViewerPlugin.css'),
-        file('ImageViewerPlugin.css'),
-        file('UnknownFilePlugin.css'),
-        file('viewer.css')
-        //,file('viewerTouch.css')
-    ])
-    .to(path.resolve(releaseDir, 'viewer.css'));
+shell.cp("-R", path.resolve("src", "images"), releaseDir);
+shell.cp(path.resolve(sourceDir, "index.html"), releaseDir);
+shell.cp(path.resolve(sourceDir, "loader.css"), releaseDir);
+shell.cp(path.resolve(sourceDir, "compatibility.js"), releaseDir);
+shell.cp(path.resolve(sourceDir, "pdf.js"), releaseDir);
+shell.cp(path.resolve(sourceDir, "ui_utils.js"), releaseDir);
+shell.cp(path.resolve(sourceDir, "text_layer_builder.js"), releaseDir);
+shell.cp(path.resolve(sourceDir, "pdfjsversion.js"), releaseDir);
+shell.cp(path.resolve(sourceDir, "pdf.worker.js"), releaseDir);
 
 console.info('Build Ok');

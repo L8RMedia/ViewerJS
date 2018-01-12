@@ -241,7 +241,7 @@ function Viewer( viewerPlugin, parameters ) {
             canvasContainer.onscroll = onScroll;
             delayedRefresh();
             // Doesn't work in older browsers: document.getElementById('loading-document').remove();
-            var loading = document.getElementById('loading-document');
+            var loading = document.getElementById('vjs-seeking');
             loading.parentNode.removeChild(loading);
         };
 
